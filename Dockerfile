@@ -10,8 +10,12 @@ COPY . .
 # Zbuduj aplikację przy użyciu Gradle
 RUN ./gradlew build --no-daemon
 
-# Ustaw port, na którym działa aplikacja Spring Boot
+# Ustaw port aplikacji (Render wymaga zmiennej środowiskowej PORT)
+ENV PORT=8080
+
+# Eksponuj port (Render automatycznie przekierowuje na port HTTPS, nie używaj :8080 w URL)
 EXPOSE 8080
 
 # Uruchom aplikację Spring Boot
-CMD ["java", "-jar", "build/libs/task-manager-1.jar"]
+CMD ["sh", "-c", "java -jar build/libs/task-manager-1.jar --server.port=$PORT"]
+
