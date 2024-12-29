@@ -14,4 +14,4 @@ RUN ./gradlew build --no-daemon
 EXPOSE 8080
 
 # Uruchom aplikację Spring Boot
-CMD ["java", "-jar", "build/libs/task-manager-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "build/libs/task-manager-1.jar"]
